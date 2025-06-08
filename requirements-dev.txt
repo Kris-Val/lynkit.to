@@ -1,0 +1,4 @@
+black
+pre-commit
+django-debug-toolbar
+django-naomi
