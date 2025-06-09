@@ -33,7 +33,7 @@ const Index = () => {
             One link to rule them all
           </h1>
           <p className="text-xl text-gray-600 mb-8 max-w-2xl mx-auto leading-relaxed">
-            Connect your audience to all of your content with one simple link in bio. 
+            Connect your audience to all of your content with one simple link in bio.
             Share everything you create, curate and sell from your Instagram, TikTok, Twitter and other social media profiles.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
@@ -45,7 +45,7 @@ const Index = () => {
               See how it works
             </Button>
           </div>
-          
+
           {/* Demo Preview */}
           <div className="relative max-w-sm mx-auto">
             <div className="bg-white rounded-3xl shadow-2xl p-6 border">
@@ -84,7 +84,7 @@ const Index = () => {
               Powerful features to help you connect with your audience and grow your brand.
             </p>
           </div>
-          
+
           <div className="grid md:grid-cols-3 gap-8">
             {[
               {
