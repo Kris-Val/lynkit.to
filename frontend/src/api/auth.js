@@ -21,7 +21,7 @@ export const URLs = Object.freeze({
 });
 
 async function getCSRFToken() {
-    const response = await fetch(`${DJANGO_DOMAIN}/api/get-csrf-token/`, {
+    const response = await fetch(`${DJANGO_DOMAIN}/api/v1/get-csrf-token/`, {
         method: "GET",
         credentials: "include",
     });

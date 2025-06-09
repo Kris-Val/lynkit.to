@@ -1,13 +1,14 @@
 // app/about/page.js
-import SignUpForm from '../../components/SignUpForm';
+import Login from '../../components/LoginForm';
 import Header from "@/components/Header";
 import LoveableUI from "@/components/LoveableUI";
 
 export default function IndexPage() {
+
     return (
         <>
             <Header/>
-            <SignUpForm/>
+            <Login/>
         </>
     );
 }

@@ -21,6 +21,10 @@ router = DefaultRouter()
 router.register(r"profile", ProfileViewSet, basename="profile")
 router.register(r"links", LinkViewSet, basename="link")
 
+api_v1_patterns = [
+    path("", include(router.urls)),
+    path("api/get-csrf-token/", get_csrf_token, name="api-get-csrf-token"),
+]
 
 urlpatterns = [
     path(
@@ -32,8 +36,7 @@ urlpatterns = [
     path("admin/", admin.site.urls),
     path("accounts/", include("allauth.urls")),
     path("_allauth/", include("allauth.headless.urls")),
-    path("api/v1/", include((router.urls, "v1"))),
-    path("api/get-csrf-token/", get_csrf_token, name="api-get-csrf-token"),
+    path("api/v1/", include((api_v1_patterns, "api"), namespace="v1")),
     path("api/schema/", SpectacularAPIView.as_view(api_version="v1"), name="schema"),
     path("docs/", SpectacularRedocView.as_view(url_name="schema"), name="redoc"),
 ]

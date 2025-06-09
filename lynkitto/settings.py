@@ -201,7 +201,6 @@ CSRF_TRUSTED_ORIGINS = [
 CSRF_COOKIE_SAMESITE = "None"
 CSRF_COOKIE_SECURE = True
 
-
 # AllAuth
 # ----------------------------------------------------------------------
 # ACCOUNT_EMAIL_VERIFICATION = "mandatory"
@@ -213,13 +212,13 @@ ACCOUNT_LOGIN_METHODS = {"email"}
 EMAIL_HOST = "mail"
 EMAIL_PORT = 1025
 HEADLESS_ONLY = True
-HEADLESS_FRONTEND_URLS = {
-    "account_confirm_email": "/account/verify-email/{key}",
-    "account_reset_password": "/account/password/reset",
-    "account_reset_password_from_key": "/account/password/reset/key/{key}",
-    "account_signup": "/account/signup",
-    "socialaccount_login_error": "/account/provider/callback",
-}
+# HEADLESS_FRONTEND_URLS = {
+#     "account_confirm_email": "/account/verify-email/{key}",
+#     "account_reset_password": "/account/password/reset",
+#     "account_reset_password_from_key": "/account/password/reset/key/{key}",
+#     "account_signup": "/account/signup",
+#     "socialaccount_login_error": "/account/provider/callback",
+# }
 
 
 # TEMPLATES
@@ -298,7 +297,7 @@ if DEBUG and env.get_value("ENABLE_DEBUG_TOOLBAR", False):
 
 if DEBUG:
     try:
-        from naomi.mail.backends import naomi
+        from naomi.mail.backends import naomi  # noqa: F401
     except ImportError:
         pass
     else:
@@ -306,6 +305,5 @@ if DEBUG:
 
         EMAIL_BACKEND = "naomi.mail.backends.naomi.NaomiBackend"
         EMAIL_FILE_PATH = root(".naomi/")
-
 
 SILENCED_SYSTEM_CHECKS = ["django_recaptcha.recaptcha_test_key_error"]
