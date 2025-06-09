@@ -298,7 +298,7 @@ if DEBUG and env.get_value("ENABLE_DEBUG_TOOLBAR", False):
 
 if DEBUG:
     try:
-        from naomi.mail.backends import naomi  # noqa: 401 # Check if installed
+        from naomi.mail.backends import naomi
     except ImportError:
         pass
     else:

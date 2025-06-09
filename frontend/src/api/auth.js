@@ -1,35 +1,54 @@
-// auth.js (or wherever)
-import Cookies from 'js-cookie';
-import {useEffect} from "react";
+const DJANGO_DOMAIN = "http://127.0.0.1:8000"
 
-export async function getCSRFToken() {
-  const res = await fetch("http://127.0.0.1:8000/api/get-csrf-token/", {
-    method: "GET",
-    credentials: "include",
-  });
-  if (!res.ok) {
-    throw new Error(`Could not fetch CSRF token: HTTP ${res.status}`);
-  }
-  const { csrfToken } = await res.json();
-
-  return csrfToken;
+const ACCEPT_JSON = {
+    accept: 'application/json'
 }
 
+export const Client = Object.freeze({
+    APP: 'app',
+    BROWSER: 'browser'
+})
 
-export async function signUp(email,username, password) {
-  const csrfToken = await getCSRFToken();
-  console.log(`CSRF Token: ${csrfToken}`);
-  return fetch('http://127.0.0.1:8000/_allauth/browser/v1/auth/signup', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      'X-CSRFToken': csrfToken,
-    },
-    credentials: 'include',
-    body: JSON.stringify({
-      email,
-      username:username,
-      password: password,
-    }),
-  });
+export const settings = {
+    client: Client.BROWSER,
+    baseUrl: `${DJANGO_DOMAIN}/_allauth/${Client.BROWSER}/v1`,
+    // Always include credentials (cookies) for browser requests to support CSRF
+    withCredentials: true
+}
+
+export const URLs = Object.freeze({
+    SIGNUP: '/auth/signup',
+});
+
+async function getCSRFToken() {
+    const response = await fetch(`${DJANGO_DOMAIN}/api/get-csrf-token/`, {
+        method: "GET",
+        credentials: "include",
+    });
+    if (!response.ok) {
+        throw new Error(`Could not fetch CSRF token: HTTP ${response.status}`);
+    }
+    const {csrfToken} = await response.json();
+
+    return csrfToken;
+}
+
+async function request(method, path, data, headers = {}) {
+    let options = {method, headers: {...ACCEPT_JSON, ...headers}, credentials: 'include'};
+
+    let csrfToken = await getCSRFToken();
+    if (csrfToken) {
+        options.headers['X-CSRFToken'] = csrfToken;
+    }
+    if (data) {
+        options.body = JSON.stringify(data);
+        options.headers['Content-Type'] = 'application/json';
+    }
+
+    let response = await fetch(settings.baseUrl + path, options);
+    return await response.json()
+}
+
+export const auth = {
+    signUp: (data) => request('POST', URLs.SIGNUP, data),
 }
