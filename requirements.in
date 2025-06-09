@@ -31,3 +31,8 @@ django-dbsettings
 
 environ
 requests
+cryptography
+googleauthentication
+distutils
+setuptools
+django-google-auth

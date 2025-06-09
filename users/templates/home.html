@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Django Google Sign In</title>
+</head>
+<body>
+{% load socialaccount %}
+<h1>Welcome to Django Google Sign In</h1>
+<p>
+    <a href="{% provider_login_url 'google' %}?next=/">Sign in with Google</a>
+
+    {% if user.is_authenticated %}
+<p>Welcome, {{ user.username }}!</p>
+<p><a href="{% url 'account_logout' %}">Logout</a></p>
+{% else %}
+<p>You are not logged in.</p>
+{% endif %}
+</body>
+</html>

@@ -40,7 +40,7 @@ SECRET_KEY = env("SECRET_KEY")
 
 ALLOWED_HOSTS = env.list("ALLOWED_HOSTS", default=["*"])
 
-SITE_ID = env.int("SITE_ID", default=1)
+SITE_ID = env.int("SITE_ID", default=2)
 
 X_FRAME_OPTIONS = "DENY"
 
@@ -66,8 +66,12 @@ LOCALE_PATHS = [root("locale/")]
 
 # AUTHENTICATION
 # ----------------------------------------------------------------------
-
-LOGIN_REDIRECT_URL = "/"
+AUTHENTICATION_BACKENDS = [
+    "django.contrib.auth.backends.ModelBackend",
+    "allauth.account.auth_backends.AuthenticationBackend",
+]
+LOGIN_REDIRECT_URL = '/'  # Where to redirect users after login
+LOGOUT_REDIRECT_URL = '/'  # Where to redirect users after logout
 
 # DATABASES & CACHES
 # ----------------------------------------------------------------------
@@ -110,8 +114,10 @@ INSTALLED_APPS = [
     "allauth",
     "allauth.account",
     "allauth.socialaccount",
+    "allauth.socialaccount.providers.google",
     "allauth.headless",
     "corsheaders",
+    "users",
 ]
 
 # MIDDLEWARE
@@ -204,22 +210,20 @@ CSRF_COOKIE_SECURE = True
 # AllAuth
 # ----------------------------------------------------------------------
 # ACCOUNT_EMAIL_VERIFICATION = "mandatory"
-ACCOUNT_LOGIN_METHODS = {"email"}
+ACCOUNT_LOGIN_METHODS = {"email", "username"}
 # ACCOUNT_LOGOUT_ON_PASSWORD_CHANGE = False
 # ACCOUNT_LOGIN_BY_CODE_ENABLED = True
 # ACCOUNT_EMAIL_VERIFICATION_BY_CODE_ENABLED = True
 # ACCOUNT_SIGNUP_FIELDS = ["email*", "password1*", "password2*"]
 EMAIL_HOST = "mail"
 EMAIL_PORT = 1025
-HEADLESS_ONLY = True
-# HEADLESS_FRONTEND_URLS = {
-#     "account_confirm_email": "/account/verify-email/{key}",
-#     "account_reset_password": "/account/password/reset",
-#     "account_reset_password_from_key": "/account/password/reset/key/{key}",
-#     "account_signup": "/account/signup",
-#     "socialaccount_login_error": "/account/provider/callback",
-# }
-
+HEADLESS_FRONTEND_URLS = {
+    "account_confirm_email": "/account/verify-email/{key}",
+    "account_reset_password": "/account/password/reset",
+    "account_reset_password_from_key": "/account/password/reset/key/{key}",
+    "account_signup": "/account/signup",
+    "socialaccount_login_error": "/account/provider/callback",
+}
 
 # TEMPLATES
 # ----------------------------------------------------------------------
@@ -227,7 +231,7 @@ HEADLESS_ONLY = True
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [root("lynkitto/static/", required=True)],
+        "DIRS": [root("lynkitto/templates/", required=True)],
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [

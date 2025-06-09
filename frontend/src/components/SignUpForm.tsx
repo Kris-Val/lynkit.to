@@ -19,9 +19,9 @@ export default function SignUpForm() {
 
         try {
             // Pass CSRF token into signUp API call
-            const res = await auth.signUp({email, username, password});
-            if (!res.ok) {
-                const data = await res.json();
+            const response = await auth.signUp({email, username, password});
+            if (!response.ok) {
+                const data = await response.json();
                 new Error(data.detail ?? "Signup failed");
             }
             setSuccess(true);

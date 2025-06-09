@@ -18,6 +18,11 @@ export const settings = {
 
 export const URLs = Object.freeze({
     SIGNUP: '/auth/signup',
+    LOGIN: '/auth/login',
+    PROVIDER_SIGNUP: '/auth/provider/signup',
+    REDIRECT_TO_PROVIDER: '/auth/provider/redirect',
+    PROVIDER_TOKEN: '/auth/provider/token',
+
 });
 
 async function getCSRFToken() {
@@ -51,4 +56,6 @@ async function request(method, path, data, headers = {}) {
 
 export const auth = {
     signUp: (data) => request('POST', URLs.SIGNUP, data),
+    login: (data) => request('POST', URLs.LOGIN, data),
+
 }
