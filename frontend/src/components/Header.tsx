@@ -4,7 +4,7 @@ import {Button} from "@/components/ui/button";
 const Header = () => {
     return (
         <header className="container mx-auto px-4 py-6 flex items-center justify-between">
-            <a href="/" className="flex items-center space-x-2">
+            <Link href="/" className="flex items-center space-x-2">
                 <div
                     className="w-8 h-8 bg-gradient-to-r from-purple-600 to-blue-600 rounded-lg flex items-center justify-center">
                     <Link className="w-5 h-5 text-white"/>
@@ -13,7 +13,7 @@ const Header = () => {
                     className="text-xl font-bold bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent">
           LinkHub
         </span>
-            </a>
+            </Link>
             <div className="flex items-center space-x-4">
                 <Button variant="ghost" className="text-gray-600 hover:text-gray-900" asChild>
                     <a href="/login">Log in</a>

@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "postbuild": "powershell -Command \"Copy-Item -Recurse -Force out\\_next ..\\lynkitto\\static\\_next; Copy-Item -Force out\\index.html ..\\lynkitto\\templates\\next\\index.html\"",
     "start": "next start",
     "lint": "next lint"
   },

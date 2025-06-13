@@ -15,7 +15,7 @@
 
 # next.js
 /.next/
-/out/
+/lynkitto/static/out/
 
 # production
 /build

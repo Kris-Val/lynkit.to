@@ -7,11 +7,12 @@ from django.urls import include, path
 from django.views.generic import TemplateView
 from drf_spectacular.views import SpectacularAPIView, SpectacularRedocView
 from rest_framework.routers import DefaultRouter
+from django.urls import path, re_path
 
 from profiles.views import LinkViewSet, ProfileViewSet
 from users.views import home, logout_view
 
-from .views import get_csrf_token
+from .views import homepage
 
 admin.autodiscover()
 admin.site.login = secure_admin_login(admin.site.login)
@@ -25,7 +26,6 @@ router.register(r"links", LinkViewSet, basename="link")
 
 api_v1_patterns = [
     path("", include(router.urls)),
-    path("get-csrf-token/", get_csrf_token, name="get-csrf-token"),
 ]
 
 urlpatterns = [
@@ -43,6 +43,9 @@ urlpatterns = [
     path("api/schema/", SpectacularAPIView.as_view(api_version="v1"), name="schema"),
     path("docs/", SpectacularRedocView.as_view(url_name="schema"), name="redoc"),
     path("users", include("users.urls")),
+    re_path(r'^(?:.*)/?$', homepage),  # optional: handles React/Next client-side routing
+    path('', homepage)
+
 ]
 
 if settings.DEBUG:
