@@ -211,4 +211,9 @@ cython_debug/
 #.idea/
 
 .next/
+_next/
+package.json
 static/_next/
+/frontend/out/
+node_modules/
+/out/

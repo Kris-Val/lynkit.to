@@ -36,3 +36,5 @@ googleauthentication
 distutils
 setuptools
 django-google-auth
+uvicorn
+channels

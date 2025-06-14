@@ -110,14 +110,18 @@ INSTALLED_APPS = [
     "django_recaptcha",
     "dbsettings",
     "contrib.admin_site_checks",
-    "profiles",
     "allauth",
     "allauth.account",
     "allauth.socialaccount",
     "allauth.socialaccount.providers.google",
     "allauth.headless",
     "corsheaders",
+    "django_nextjs",
+    # Apps
+    # ----------------------------------------------------------------------
     "users",
+    "sitecontent",
+    "profiles",
 ]
 
 # MIDDLEWARE
@@ -311,3 +315,12 @@ if DEBUG:
         EMAIL_FILE_PATH = root(".naomi/")
 
 SILENCED_SYSTEM_CHECKS = ["django_recaptcha.recaptcha_test_key_error"]
+
+# NEXTJS
+# ----------------------------------------------------------------------
+APPEND_SLASH = True  # to avoid redirect loops, and don't add trailing slashes to Next.js paths. NEED FALSE !!!!!
+NEXTJS_SETTINGS = {
+    "nextjs_server_url": "http://127.0.0.1:3000",
+    "ensure_csrf_token": True,
+    "public_subdirectory": "/next",
+}

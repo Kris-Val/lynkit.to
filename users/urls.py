@@ -1,8 +1,7 @@
+# urls.py
 from django.urls import path
-
-from . import views
+from .views import auth_status
 
 urlpatterns = [
-    path("", views.home, name="home"),
-    path("logout", views.logout_view, name="logout"),
+    path("auth/status", auth_status, name="auth_status"),
 ]

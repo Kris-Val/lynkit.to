@@ -1,25 +1,46 @@
 {% extends "account/base_manage.html" %}
 {% load allauth i18n %}
+
 {% block head_title %}
-    {% trans "Sign Out" %}
+{% trans "Sign Out" %} - LinkHub
 {% endblock head_title %}
+
 {% block content %}
-    {% element h1 %}
-        {% trans "Sign Out" %}
-    {% endelement %}
-    {% element p %}
-        {% trans 'Are you sure you want to sign out?' %}
-    {% endelement %}
-    {% url 'account_logout' as action_url %}
-    {% element form method="post" action=action_url no_visible_fields=True %}
-        {% slot body %}
-            {% csrf_token %}
-            {{ redirect_field }}
-        {% endslot %}
-        {% slot actions %}
-            {% element button type="submit" %}
-                {% trans 'Sign Out' %}
-            {% endelement %}
-        {% endslot %}
-    {% endelement %}
+<div class="min-h-screen flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-md w-full space-y-8">
+        <div class="text-center">
+            <div class="flex justify-center mb-4">
+                <div class="w-12 h-12 bg-gradient-to-r from-purple-600 to-blue-600 rounded-xl flex items-center justify-center">
+                    <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                              d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1m0-10v1"/>
+                    </svg>
+                </div>
+            </div>
+            <h1 class="text-3xl font-bold text-gray-900">{% trans "Sign Out" %}</h1>
+            <p class="mt-2 text-sm text-gray-600">
+                {% trans "Are you sure you want to sign out?" %}
+            </p>
+        </div>
+
+        <div class="bg-white py-8 px-6 shadow-xl rounded-xl border border-gray-100">
+            <form method="post" action="{% url 'account_logout' %}">
+                {% csrf_token %}
+                {{ redirect_field }}
+                <button
+                        type="submit"
+                        class="w-full flex justify-center py-3 px-4 border border-transparent rounded-lg shadow-sm text-sm font-medium text-white bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-purple-500 transition"
+                >
+                    {% trans "Sign Out" %}
+                </button>
+            </form>
+        </div>
+
+        <div class="text-center">
+            <a href="/" class="text-purple-600 hover:text-purple-500 font-medium transition-colors">
+                ← {% trans "Back to Dashboard" %}
+            </a>
+        </div>
+    </div>
+</div>
 {% endblock content %}

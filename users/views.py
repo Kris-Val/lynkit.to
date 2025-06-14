@@ -1,13 +1,11 @@
-from django.shortcuts import render, redirect
-from django.contrib.auth import logout
+from django.http import JsonResponse
 
 
-def home(request):
-    """Render the home page."""
-    return render(request, "home.html")
-
-
-def logout_view(request):
-    """Handle user logout."""
-    logout(request)
-    return redirect("/")  # Redirect to home page after logout
+def auth_status(request):
+    if request.user.is_authenticated:
+        return JsonResponse({
+            "authenticated": True,
+            "username": request.user.username,
+            "email": request.user.email,
+        })
+    return JsonResponse({"authenticated": False})

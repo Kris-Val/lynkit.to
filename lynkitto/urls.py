@@ -5,14 +5,12 @@ from django.contrib import admin
 from django.contrib.sitemaps.views import sitemap
 from django.urls import include, path
 from django.views.generic import TemplateView
+from django_nextjs.proxy import NextJSProxyView
 from drf_spectacular.views import SpectacularAPIView, SpectacularRedocView
 from rest_framework.routers import DefaultRouter
 from django.urls import path, re_path
 
 from profiles.views import LinkViewSet, ProfileViewSet
-from users.views import home, logout_view
-
-from .views import homepage
 
 admin.autodiscover()
 admin.site.login = secure_admin_login(admin.site.login)
@@ -26,6 +24,7 @@ router.register(r"links", LinkViewSet, basename="link")
 
 api_v1_patterns = [
     path("", include(router.urls)),
+    path("", include("users.urls")),
 ]
 
 urlpatterns = [
@@ -42,10 +41,8 @@ urlpatterns = [
     path("api/v1/", include((api_v1_patterns, "api"), namespace="v1")),
     path("api/schema/", SpectacularAPIView.as_view(api_version="v1"), name="schema"),
     path("docs/", SpectacularRedocView.as_view(url_name="schema"), name="redoc"),
-    path("users", include("users.urls")),
-    re_path(r'^(?:.*)/?$', homepage),  # optional: handles React/Next client-side routing
-    path('', homepage)
-
+    path("users/", include("users.urls")),
+    path("", include("sitecontent.urls")),
 ]
 
 if settings.DEBUG:
@@ -63,3 +60,4 @@ if settings.DEBUG:
 
     urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+    urlpatterns += path("", include("django_nextjs.urls")),
