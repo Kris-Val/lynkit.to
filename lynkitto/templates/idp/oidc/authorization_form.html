@@ -1,12 +1,12 @@
 {% extends "allauth/layouts/entrance.html" %}
-{% load i18n %}
-{% load allauth %}
+{% load allauth i18n %}
 {% block head_title %}
-    {% trans "Authorize" %}
+    {% translate "Authorize" %}
 {% endblock head_title %}
+
 {% block content %}
     {% element h1 %}
-        {% trans "Authorize" %} {{ client.name }}
+        {% translate "Authorize" %} {{ client.name }}
     {% endelement %}
     {% element p %}
         {% blocktranslate with client_name=client.name site_name=site.name %}{{ client_name }} wants to access your {{ site_name }} account.{% endblocktranslate %}
@@ -28,4 +28,4 @@
             {% endelement %}
         {% endslot %}
     {% endelement %}
-{% endblock %}
+{% endblock content %}

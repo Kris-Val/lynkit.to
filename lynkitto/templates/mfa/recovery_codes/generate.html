@@ -1,6 +1,5 @@
 {% extends "mfa/recovery_codes/base.html" %}
-{% load i18n %}
-{% load allauth %}
+{% load allauth i18n %}
 {% block content %}
     {% element h1 %}
         {% translate "Recovery Codes" %}
@@ -26,7 +25,7 @@
                 {% endif %}
             {% endsetvar %}
             {% element button type="submit" tags=tags %}
-                {% trans "Generate" %}
+                {% translate "Generate" %}
             {% endelement %}
         {% endslot %}
     {% endelement %}

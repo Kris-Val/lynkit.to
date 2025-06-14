@@ -1,11 +1,12 @@
 {% extends "account/base_entrance.html" %}
 {% load allauth i18n %}
 {% block head_title %}
-    {% trans "Signup" %}
+    {% translate "Signup" %}
 {% endblock head_title %}
+
 {% block content %}
     {% element h1 %}
-        {% trans "Passkey Sign Up" %}
+        {% translate "Passkey Sign Up" %}
     {% endelement %}
     {% setvar link %}
         <a href="{{ login_url }}">
@@ -26,13 +27,13 @@
         {% endslot %}
         {% slot actions %}
             {% element button tags="prominent,signup" type="submit" %}
-                {% trans "Sign Up" %}
+                {% translate "Sign Up" %}
             {% endelement %}
         {% endslot %}
     {% endelement %}
     {% element hr %}
     {% endelement %}
     {% element button href=signup_url tags="prominent,signup,outline,primary" %}
-        {% trans "Other options" %}
+        {% translate "Other options" %}
     {% endelement %}
 {% endblock content %}

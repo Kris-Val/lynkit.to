@@ -2,7 +2,7 @@
 {% load allauth i18n %}
 
 {% block head_title %}
-{% trans "Sign Out" %} - LinkHub
+{% translate "Sign Out" %} - LinkHub
 {% endblock head_title %}
 
 {% block content %}
@@ -17,9 +17,9 @@
                     </svg>
                 </div>
             </div>
-            <h1 class="text-3xl font-bold text-gray-900">{% trans "Sign Out" %}</h1>
+            <h1 class="text-3xl font-bold text-gray-900">{% translate "Sign Out" %}</h1>
             <p class="mt-2 text-sm text-gray-600">
-                {% trans "Are you sure you want to sign out?" %}
+                {% translate "Are you sure you want to sign out?" %}
             </p>
         </div>
 
@@ -31,14 +31,14 @@
                         type="submit"
                         class="w-full flex justify-center py-3 px-4 border border-transparent rounded-lg shadow-sm text-sm font-medium text-white bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-purple-500 transition"
                 >
-                    {% trans "Sign Out" %}
+                    {% translate "Sign Out" %}
                 </button>
             </form>
         </div>
 
         <div class="text-center">
             <a href="/" class="text-purple-600 hover:text-purple-500 font-medium transition-colors">
-                ← {% trans "Back to Dashboard" %}
+                ← {% translate "Back to Dashboard" %}
             </a>
         </div>
     </div>

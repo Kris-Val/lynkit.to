@@ -70,8 +70,8 @@ AUTHENTICATION_BACKENDS = [
     "django.contrib.auth.backends.ModelBackend",
     "allauth.account.auth_backends.AuthenticationBackend",
 ]
-LOGIN_REDIRECT_URL = '/'  # Where to redirect users after login
-LOGOUT_REDIRECT_URL = '/'  # Where to redirect users after logout
+LOGIN_REDIRECT_URL = "/"  # Where to redirect users after login
+LOGOUT_REDIRECT_URL = "/"  # Where to redirect users after logout
 
 # DATABASES & CACHES
 # ----------------------------------------------------------------------

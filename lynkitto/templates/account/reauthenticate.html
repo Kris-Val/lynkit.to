@@ -1,6 +1,5 @@
 {% extends "account/base_reauthenticate.html" %}
-{% load allauth %}
-{% load i18n %}
+{% load allauth i18n %}
 {% block reauthenticate_content %}
     {% element p %}
         {% blocktranslate %}Enter your password:{% endblocktranslate %}
@@ -15,8 +14,8 @@
         {% endslot %}
         {% slot actions %}
             {% element button type="submit" tags="primary,reauthenticate" %}
-                {% trans "Confirm" %}
+                {% translate "Confirm" %}
             {% endelement %}
         {% endslot %}
     {% endelement %}
-{% endblock %}
+{% endblock reauthenticate_content %}

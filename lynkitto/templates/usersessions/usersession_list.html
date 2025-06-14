@@ -1,13 +1,12 @@
 {% extends "usersessions/base_manage.html" %}
-{% load allauth %}
-{% load i18n %}
-{% load humanize %}
+{% load allauth humanize i18n %}
 {% block head_title %}
-    {% trans "Sessions" %}
+    {% translate "Sessions" %}
 {% endblock head_title %}
+
 {% block content %}
     {% element h1 tags="usersessions,list" %}
-        {% trans "Sessions" %}
+        {% translate "Sessions" %}
     {% endelement %}
     {% if session_count > 1 %}
         {% url 'usersessions_list' as action_url %}

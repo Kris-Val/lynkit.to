@@ -1,11 +1,12 @@
 {% extends "mfa/base_entrance.html" %}
-{% load i18n allauth static %}
+{% load allauth i18n static %}
 {% block head_title %}
-    {% trans "Trust this Browser?" %}
+    {% translate "Trust this Browser?" %}
 {% endblock head_title %}
+
 {% block content %}
     {% element h1 %}
-        {% trans "Trust this Browser?" %}
+        {% translate "Trust this Browser?" %}
     {% endelement %}
     {% element p %}
         {% blocktranslate %}If you choose to trust this browser, you will not be asked for a verification code the next time you sign in.{% endblocktranslate %}
@@ -23,10 +24,10 @@
                     {% blocktranslate with period=trust_until|timeuntil:trust_from %}Trust for {{ period }}{% endblocktranslate %}
                 {% endelement %}
                 {% element button name="action" value="skip" type="submit" tags="outline,mfa,trust" %}
-                    {% trans "Don't Trust" %}
+                    {% translate "Don't Trust" %}
                 {% endelement %}
                 {% element button type="submit" form="logout-from-stage" tags="outline,mfa,trust,cancel" %}
-                    {% trans "Cancel" %}
+                    {% translate "Cancel" %}
                 {% endelement %}
             {% endelement %}
         {% endslot %}

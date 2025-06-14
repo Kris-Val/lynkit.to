@@ -1,12 +1,12 @@
 {% extends "mfa/totp/base.html" %}
-{% load i18n %}
-{% load allauth %}
+{% load allauth i18n %}
 {% block head_title %}
-    {% trans "Deactivate Authenticator App" %}
+    {% translate "Deactivate Authenticator App" %}
 {% endblock head_title %}
+
 {% block content %}
     {% element h1 %}
-        {% trans "Deactivate Authenticator App" %}
+        {% translate "Deactivate Authenticator App" %}
     {% endelement %}
     {% element p %}
         {% blocktranslate %}You are about to deactivate authenticator app based authentication. Are you sure?{% endblocktranslate %}
@@ -21,7 +21,7 @@
         {% endslot %}
         {% slot actions %}
             {% element button tags="danger,delete" type="submit" %}
-                {% trans "Deactivate" %}
+                {% translate "Deactivate" %}
             {% endelement %}
         {% endslot %}
     {% endelement %}

@@ -1,2 +1,2 @@
 {% load i18n %}
-{% blocktrans %}Authenticator app deactivated.{% endblocktrans %}
+{% blocktranslate %}Authenticator app deactivated.{% endblocktranslate %}

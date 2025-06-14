@@ -1,5 +1,5 @@
-from django.shortcuts import render, redirect
 from django.contrib.auth import logout
+from django.shortcuts import redirect, render
 from django_nextjs.render import render_nextjs_page
 
 

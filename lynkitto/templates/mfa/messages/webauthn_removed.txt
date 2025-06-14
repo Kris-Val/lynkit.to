@@ -1,2 +1,2 @@
 {% load i18n %}
-{% blocktrans %}Security key removed.{% endblocktrans %}
+{% blocktranslate %}Security key removed.{% endblocktranslate %}

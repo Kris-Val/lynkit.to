@@ -1,12 +1,12 @@
 {% extends "account/base_manage_phone.html" %}
-{% load i18n %}
-{% load allauth %}
+{% load allauth i18n %}
 {% block head_title %}
-    {% trans "Change Phone" %}
+    {% translate "Change Phone" %}
 {% endblock head_title %}
+
 {% block content %}
     {% element h1 %}
-        {% trans "Change Phone" %}
+        {% translate "Change Phone" %}
     {% endelement %}
     {% url 'account_change_phone' as action_url %}
     {% element form method="post" action=action_url %}
@@ -21,7 +21,7 @@
                         {% slot help_text %}
                             {% blocktranslate %}Your phone number is still pending verification.{% endblocktranslate %}
                             {% element button form="verify-phone" type="submit" tags="minor,secondary" %}
-                                {% trans 'Re-send Verification' %}
+                                {% translate 'Re-send Verification' %}
                             {% endelement %}
                         {% endslot %}
                     {% endif %}
@@ -35,7 +35,7 @@
         {% endslot %}
         {% slot actions %}
             {% element button name="action_add" type="submit" %}
-                {% trans "Change Phone" %}
+                {% translate "Change Phone" %}
             {% endelement %}
         {% endslot %}
     {% endelement %}

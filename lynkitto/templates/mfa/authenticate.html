@@ -1,13 +1,12 @@
 {% extends "mfa/base_entrance.html" %}
-{% load i18n %}
-{% load allauth %}
-{% load allauth static %}
+{% load allauth i18n static %}
 {% block head_title %}
-    {% trans "Sign In" %}
+    {% translate "Sign In" %}
 {% endblock head_title %}
+
 {% block content %}
     {% element h1 %}
-        {% trans "Two-Factor Authentication" %}
+        {% translate "Two-Factor Authentication" %}
     {% endelement %}
     {% element p %}
         {% blocktranslate %}Your account is protected by two-factor authentication. Please enter an authenticator code:{% endblocktranslate %}
@@ -21,11 +20,11 @@
         {% endslot %}
         {% slot actions %}
             {% element button type="submit" tags="primary,mfa,login" %}
-                {% trans "Sign In" %}
+                {% translate "Sign In" %}
             {% endelement %}
             {% if "webauthn" not in MFA_SUPPORTED_TYPES %}
                 {% element button type="submit" form="logout-from-stage" tags="link,mfa,cancel" %}
-                    {% trans "Cancel" %}
+                    {% translate "Cancel" %}
                 {% endelement %}
             {% endif %}
         {% endslot %}
@@ -38,10 +37,10 @@
         {% endelement %}
         {% element button_group vertical=True %}
             {% element button form="webauthn_form" id="mfa_webauthn_authenticate" type="button" tags="outline,primary" %}
-                {% trans "Use a security key" %}
+                {% translate "Use a security key" %}
             {% endelement %}
             {% element button type="submit" form="logout-from-stage" tags="outline,primary,mfa,cancel" %}
-                {% trans "Cancel" %}
+                {% translate "Cancel" %}
             {% endelement %}
         {% endelement %}
         {% if "webauthn" in MFA_SUPPORTED_TYPES %}

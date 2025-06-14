@@ -1,4 +1,4 @@
 {% extends "account/email/base_notification.txt" %}
 {% load i18n %}
 
-{% block notification_message %}{% blocktrans %}A new security key has been added.{% endblocktrans %}{% endblock notification_message %}
+{% block notification_message %}{% blocktranslate %}A new security key has been added.{% endblocktranslate %}{% endblock %}

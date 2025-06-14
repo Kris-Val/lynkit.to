@@ -1,9 +1,8 @@
 {% extends "mfa/webauthn/base.html" %}
-{% load i18n %}
-{% load allauth %}
+{% load allauth i18n %}
 {% block content %}
     {% element h1 %}
-        {% trans "Remove Security Key" %}
+        {% translate "Remove Security Key" %}
     {% endelement %}
     {% element p %}
         {% blocktranslate %}Are you sure you want to remove this security key?{% endblocktranslate %}
@@ -17,4 +16,4 @@
             {% endelement %}
         {% endslot %}
     {% endelement %}
-{% endblock %}
+{% endblock content %}

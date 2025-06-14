@@ -1,11 +1,8 @@
 {% extends "mfa/webauthn/base.html" %}
-{% load i18n %}
-{% load static %}
-{% load allauth %}
-{% load humanize %}
+{% load allauth humanize i18n static %}
 {% block content %}
     {% element h1 %}
-        {% trans "Security Keys" %}
+        {% translate "Security Keys" %}
     {% endelement %}
     {% if authenticators|length == 0 %}
         {% element p %}
@@ -71,4 +68,4 @@
     {% endelement %}
 </li>
 </ul>
-{% endblock %}
+{% endblock content %}

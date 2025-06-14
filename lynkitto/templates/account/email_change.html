@@ -1,12 +1,12 @@
 {% extends "account/base_manage_email.html" %}
-{% load i18n %}
-{% load allauth %}
+{% load allauth i18n %}
 {% block head_title %}
-    {% trans "Email Address" %}
+    {% translate "Email Address" %}
 {% endblock head_title %}
+
 {% block content %}
     {% element h1 %}
-        {% trans "Email Address" %}
+        {% translate "Email Address" %}
     {% endelement %}
     {% if not emailaddresses %}
         {% include "account/snippets/warn_no_email.html" %}
@@ -34,11 +34,11 @@
                     {% slot help_text %}
                         {% blocktranslate %}Your email address is still pending verification.{% endblocktranslate %}
                         {% element button form="pending-email" type="submit" name="action_send" tags="minor,secondary" %}
-                            {% trans 'Re-send Verification' %}
+                            {% translate 'Re-send Verification' %}
                         {% endelement %}
                         {% if current_emailaddress %}
                             {% element button form="pending-email" type="submit" name="action_remove" tags="danger,minor" %}
-                                {% trans 'Cancel Change' %}
+                                {% translate 'Cancel Change' %}
                             {% endelement %}
                         {% endif %}
                     {% endslot %}
@@ -52,7 +52,7 @@
         {% endslot %}
         {% slot actions %}
             {% element button name="action_add" type="submit" %}
-                {% trans "Change Email" %}
+                {% translate "Change Email" %}
             {% endelement %}
         {% endslot %}
     {% endelement %}

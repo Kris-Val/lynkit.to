@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>
-        {% block head_title %}LinkHub - Authentication{% endblock head_title %}
+        {% block head_title %}LinkHub - Authentication{% endblock %}
     </title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -70,7 +70,7 @@
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                   d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
                         </svg>
-                        {% trans "Change Email" %}
+                        {% translate "Change Email" %}
                     </a>
                     {% endif %}
                     {% url 'account_change_password' as change_password_url_ %}
@@ -81,7 +81,7 @@
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                   d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path>
                         </svg>
-                        {% trans "Change Password" %}
+                        {% translate "Change Password" %}
                     </a>
                     {% endif %}
                     {% url 'socialaccount_connections' as connections_url_ %}
@@ -91,7 +91,7 @@
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                   d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"></path>
                         </svg>
-                        {% trans "Account Connections" %}
+                        {% translate "Account Connections" %}
                     </a>
                     {% endif %}
                     {% url 'mfa_index' as mfa_url_ %}
@@ -101,7 +101,7 @@
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                   d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path>
                         </svg>
-                        {% trans "Two-Factor Authentication" %}
+                        {% translate "Two-Factor Authentication" %}
                     </a>
                     {% endif %}
                     {% url 'usersessions_list' as usersessions_list_url_ %}
@@ -112,7 +112,7 @@
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                   d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
                         </svg>
-                        {% trans "Sessions" %}
+                        {% translate "Sessions" %}
                     </a>
                     {% endif %}
                     <hr class="my-1">
@@ -123,7 +123,7 @@
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                   d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"></path>
                         </svg>
-                        {% trans "Sign Out" %}
+                        {% translate "Sign Out" %}
                     </a>
                     {% endif %}
                 </div>
@@ -134,14 +134,14 @@
                 {% if login_url_ %}
                 <a href="{{ login_url_ }}"
                    class="text-gray-600 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium">
-                    {% trans "Sign In" %}
+                    {% translate "Sign In" %}
                 </a>
                 {% endif %}
                 {% url 'account_signup' as signup_url_ %}
                 {% if signup_url_ %}
                 <a href="{{ signup_url_ }}"
                    class="bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white px-4 py-2 rounded-md text-sm font-medium transition-all duration-200">
-                    {% trans "Sign Up" %}
+                    {% translate "Sign Up" %}
                 </a>
                 {% endif %}
             </div>
@@ -168,53 +168,53 @@
             {% url 'account_email' as email_url_ %}
             {% if email_url_ %}
             <a href="{{ email_url_ }}" class="block px-3 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-md">
-                {% trans "Change Email" %}
+                {% translate "Change Email" %}
             </a>
             {% endif %}
             {% url 'account_change_password' as change_password_url_ %}
             {% if change_password_url_ %}
             <a href="{{ change_password_url_ }}"
                class="block px-3 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-md">
-                {% trans "Change Password" %}
+                {% translate "Change Password" %}
             </a>
             {% endif %}
             {% url 'socialaccount_connections' as connections_url_ %}
             {% if connections_url_ %}
             <a href="{{ connections_url_ }}" class="block px-3 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-md">
-                {% trans "Account Connections" %}
+                {% translate "Account Connections" %}
             </a>
             {% endif %}
             {% url 'mfa_index' as mfa_url_ %}
             {% if mfa_url_ %}
             <a href="{{ mfa_url_ }}" class="block px-3 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-md">
-                {% trans "Two-Factor Authentication" %}
+                {% translate "Two-Factor Authentication" %}
             </a>
             {% endif %}
             {% url 'usersessions_list' as usersessions_list_url_ %}
             {% if usersessions_list_url_ %}
             <a href="{{ usersessions_list_url_ }}"
                class="block px-3 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-md">
-                {% trans "Sessions" %}
+                {% translate "Sessions" %}
             </a>
             {% endif %}
             {% url 'account_logout' as logout_url_ %}
             {% if logout_url_ %}
             <a href="{{ logout_url_ }}" class="block px-3 py-2 text-sm text-red-700 hover:bg-red-50 rounded-md">
-                {% trans "Sign Out" %}
+                {% translate "Sign Out" %}
             </a>
             {% endif %}
             {% else %}
             {% url 'account_login' as login_url_ %}
             {% if login_url_ %}
             <a href="{{ login_url_ }}" class="block px-3 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-md">
-                {% trans "Sign In" %}
+                {% translate "Sign In" %}
             </a>
             {% endif %}
             {% url 'account_signup' as signup_url_ %}
             {% if signup_url_ %}
             <a href="{{ signup_url_ }}"
                class="block px-3 py-2 text-sm text-white bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 rounded-md">
-                {% trans "Sign Up" %}
+                {% translate "Sign Up" %}
             </a>
             {% endif %}
             {% endif %}

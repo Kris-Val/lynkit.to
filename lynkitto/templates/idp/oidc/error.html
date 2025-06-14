@@ -1,14 +1,14 @@
 {% extends "allauth/layouts/entrance.html" %}
-{% load i18n %}
-{% load allauth %}
+{% load allauth i18n %}
 {% block head_title %}
-    {% trans "Error" %}
+    {% translate "Error" %}
 {% endblock head_title %}
+
 {% block content %}
     {% element h1 %}
-        {% trans "Error" %}
+        {% translate "Error" %}
     {% endelement %}
     {% element p %}
         {{ error.description }}
     {% endelement %}
-{% endblock %}
+{% endblock content %}

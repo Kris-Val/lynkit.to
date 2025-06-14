@@ -1,9 +1,8 @@
 {% extends "socialaccount/base_manage.html" %}
-{% load i18n %}
-{% load allauth %}
+{% load allauth i18n %}
 
 {% block head_title %}
-{% trans "Account Connections" %} - LinkHub
+{% translate "Account Connections" %} - LinkHub
 {% endblock head_title %}
 
 {% block content %}
@@ -18,17 +17,17 @@
                     </svg>
                 </div>
             </div>
-            <h1 class="text-3xl font-bold text-gray-900">{% trans "Account Connections" %}</h1>
-            <p class="mt-2 text-gray-600">{% trans "Manage your third-party account connections" %}</p>
+            <h1 class="text-3xl font-bold text-gray-900">{% translate "Account Connections" %}</h1>
+            <p class="mt-2 text-gray-600">{% translate "Manage your third-party account connections" %}</p>
         </div>
 
         <!-- Connected Accounts Section -->
         {% if form.accounts %}
         <div class="bg-white rounded-xl shadow-xl border border-gray-100 mb-8">
             <div class="p-6 border-b border-gray-100">
-                <h2 class="text-xl font-semibold text-gray-900 mb-2">{% trans "Connected Accounts" %}</h2>
-                <p class="text-gray-600">{% blocktrans %}You can sign in to your account using any of the following
-                    third-party accounts:{% endblocktrans %}</p>
+                <h2 class="text-xl font-semibold text-gray-900 mb-2">{% translate "Connected Accounts" %}</h2>
+                <p class="text-gray-600">{% blocktranslate %}You can sign in to your account using any of the following
+                    third-party accounts:{% endblocktranslate %}</p>
             </div>
 
             <div class="p-6">
@@ -80,7 +79,7 @@
                                     </div>
                                 </div>
                                 <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">
-                                                {% trans "Connected" %}
+                                                {% translate "Connected" %}
                                             </span>
                             </label>
                         </div>
@@ -93,7 +92,7 @@
                                 type="submit"
                                 class="w-full sm:w-auto px-6 py-2 bg-red-600 text-white font-medium rounded-lg hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2 transition-colors"
                         >
-                            {% trans 'Remove Selected' %}
+                            {% translate 'Remove Selected' %}
                         </button>
                     </div>
                 </form>
@@ -107,7 +106,7 @@
                           d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"></path>
                 </svg>
             </div>
-            <h3 class="text-lg font-medium text-gray-900 mb-2">{% trans "No Connected Accounts" %}</h3>
+            <h3 class="text-lg font-medium text-gray-900 mb-2">{% translate "No Connected Accounts" %}</h3>
             <p class="text-gray-600">{% trans 'You currently have no third-party accounts connected to this account.'
                 %}</p>
         </div>
@@ -116,8 +115,8 @@
         <!-- Add New Connection Section -->
         <div class="bg-white rounded-xl shadow-xl border border-gray-100">
             <div class="p-6 border-b border-gray-100">
-                <h2 class="text-xl font-semibold text-gray-900">{% trans 'Add a Third-Party Account' %}</h2>
-                <p class="mt-1 text-gray-600">{% trans "Connect additional accounts for easier sign-in" %}</p>
+                <h2 class="text-xl font-semibold text-gray-900">{% translate 'Add a Third-Party Account' %}</h2>
+                <p class="mt-1 text-gray-600">{% translate "Connect additional accounts for easier sign-in" %}</p>
             </div>
 
             <div class="p-6">
@@ -130,7 +129,7 @@
         <!-- Back to Dashboard Link -->
         <div class="text-center mt-8">
             <a href="/" class="text-purple-600 hover:text-purple-500 font-medium transition-colors">
-                ← {% trans "Back to Dashboard" %}
+                ← {% translate "Back to Dashboard" %}
             </a>
         </div>
     </div>

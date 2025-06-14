@@ -1,10 +1,8 @@
 {% extends "account/base_entrance.html" %}
-{% load i18n %}
-{% load static %}
-{% load allauth %}
+{% load allauth i18n static %}
 {% block content %}
     {% element h1 %}
-        {% trans "Create Passkey" %}
+        {% translate "Create Passkey" %}
     {% endelement %}
     {% element p %}
         {% blocktranslate %}You are about to create a passkey for your account. As you can add additional keys later on, you can use a descriptive name to tell the keys apart.{% endblocktranslate %}
@@ -18,7 +16,7 @@
         {% endslot %}
         {% slot actions %}
             {% element button id="mfa_webauthn_signup" type="button" %}
-                {% trans "Create" %}
+                {% translate "Create" %}
             {% endelement %}
         {% endslot %}
     {% endelement %}
@@ -41,4 +39,4 @@
     }
 }
     </script>
-{% endblock %}
+{% endblock content %}
